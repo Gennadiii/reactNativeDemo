@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Picker, Text, TextInput, View} from 'react-native';
-import * as Alert from "react-native-deprecated-custom-components";
+import * as Platform from "react-native-deprecated-custom-components";
 
 const operations = {
   summ: '+',
@@ -90,6 +90,9 @@ export default class Calculator extends Component {
             accessibilityLabel='countButton'
             name='countButton'
           />
+          {
+            Platform.OS === 'ios' && this.state.progressStarted && alert('You should be using Android')
+          }
           {
             this.state.progressStarted &&
             <Text
