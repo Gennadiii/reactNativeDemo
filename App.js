@@ -93,11 +93,17 @@ export default class Calculator extends Component {
             accessibilityLabel='countButton'
           />
           {
-            rn.Platform.OS === 'ios' && this.state.progressStarted && rn.Alert.alert('You are on iOS',
-              'But you really should swith to Android )',
+            rn.Platform.OS === 'ios' && this.state.progressStarted && rn.Alert.alert
+            ('You are on iOS', 'But you really should switch to Android )',
               [
-                {text: 'No, I wanna suffer', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                {text: 'Sure, I want OnePlus!', onPress: () => console.log('OK Pressed')},
+                {
+                  text: 'No, I wanna suffer',
+                  onPress: () => console.log('Cancel Pressed'), style: 'cancel'
+                },
+                {
+                  text: 'Sure, I want OnePlus!',
+                  onPress: () => console.log('OK Pressed')
+                },
               ],
               {cancelable: false})
           }
