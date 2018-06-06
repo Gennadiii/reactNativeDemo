@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Picker, Text, TextInput, View} from 'react-native';
-import * as Platform from "react-native-deprecated-custom-components";
+
+const rn = require('react-native');
+
 
 const operations = {
   summ: '+',
@@ -16,7 +18,7 @@ export default class Calculator extends Component {
     this.state = {printText: false};
     this.state = {progressStarted: false};
     this.state = {randomNumber: 1000};
-    this.state = Platform.OS === 'ios' ? {margin: 200} : {margin: 0};
+    this.state = rn.Platform.OS === 'ios' ? {margin: 200} : {margin: 0};
   }
 
   showText = () => {
@@ -92,7 +94,13 @@ export default class Calculator extends Component {
             name='countButton'
           />
           {
-            Platform.OS === 'ios' && this.state.progressStarted && alert('You should be using Android')
+            rn.Platform.OS === 'ios' && this.state.progressStarted && rn.Alert.alert('You are on iOS',
+              'But you really should swith to Android )',
+              [
+                {text: 'No, I wanna suffer', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                {text: 'Sure, I want OnePlus!', onPress: () => console.log('OK Pressed')},
+              ],
+              {cancelable: false})
           }
           {
             this.state.progressStarted &&
