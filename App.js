@@ -51,7 +51,7 @@ export default class Calculator extends Component {
             this.setState({firstNumber});
             this.resetResult();
           }}
-          name='firstNumber'
+          accessibilityLabel='firstNumber'
         />
 
         <Picker
@@ -61,7 +61,7 @@ export default class Calculator extends Component {
             this.setState({operation: itemValue});
             this.resetResult();
           }}
-          name='operationsPicker'
+          accessibilityLabel='operationsPicker'
         >
           <Picker.Item label="+" value="+"/>
           <Picker.Item label="-" value="-"/>
@@ -77,7 +77,7 @@ export default class Calculator extends Component {
             this.setState({secondNumber});
             this.resetResult();
           }}
-          name='secondNumber'
+          accessibilityLabel='secondNumber'
         />
 
         <View style={{padding: 20}}>
@@ -91,7 +91,6 @@ export default class Calculator extends Component {
             color="#FFA500"
             disabled={!(this.state.firstNumber && this.state.secondNumber)}
             accessibilityLabel='countButton'
-            name='countButton'
           />
           {
             rn.Platform.OS === 'ios' && this.state.progressStarted && rn.Alert.alert('You are on iOS',
@@ -112,7 +111,7 @@ export default class Calculator extends Component {
             this.state.printText &&
             <Text
               style={{padding: 0, fontSize: 50, textAlign: 'center'}}
-              name='result'>
+              accessibilityLabel='result'>
               {calculate(this.state.operation, this.state.firstNumber, this.state.secondNumber)}
             </Text>
           }
