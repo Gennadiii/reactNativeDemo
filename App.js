@@ -16,6 +16,7 @@ export default class Calculator extends Component {
     this.state = {printText: false};
     this.state = {progressStarted: false};
     this.state = {randomNumber: 1000};
+    this.state = Platform.OS === 'ios' ? {margin: 200} : {margin: 0};
   }
 
   showText = () => {
@@ -67,7 +68,7 @@ export default class Calculator extends Component {
         </Picker>
 
         <TextInput
-          style={{height: 80, fontSize: 50}}
+          style={{height: 80, fontSize: 50, marginTop: this.state.margin}}
           itemPositioning={'center'}
           placeholder="Second number"
           onChangeText={(secondNumber) => {
